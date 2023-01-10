@@ -1,11 +1,11 @@
 # \MappingApi
 
-All URIs are relative to *https://.o.numary.cloud/ledger*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetMapping**](MappingApi.md#GetMapping) | **Get** /{ledger}/mapping | Get the mapping of a ledger.
-[**UpdateMapping**](MappingApi.md#UpdateMapping) | **Put** /{ledger}/mapping | Update the mapping of a ledger.
+[**GetMapping**](MappingApi.md#GetMapping) | **Get** /{ledger}/mapping | Get the mapping of a ledger
+[**UpdateMapping**](MappingApi.md#UpdateMapping) | **Put** /{ledger}/mapping | Update the mapping of a ledger
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > MappingResponse GetMapping(ctx, ledger).Execute()
 
-Get the mapping of a ledger.
+Get the mapping of a ledger
 
 ### Example
 
@@ -24,15 +24,15 @@ import (
     "context"
     "fmt"
     "os"
-    client "github.com/numary/numary-go"
+    client "./openapi"
 )
 
 func main() {
     ledger := "ledger001" // string | Name of the ledger.
 
     configuration := client.NewConfiguration()
-    api_client := client.NewAPIClient(configuration)
-    resp, r, err := api_client.MappingApi.GetMapping(context.Background(), ledger).Execute()
+    apiClient := client.NewAPIClient(configuration)
+    resp, r, err := apiClient.MappingApi.GetMapping(context.Background(), ledger).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MappingApi.GetMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 > MappingResponse UpdateMapping(ctx, ledger).Mapping(mapping).Execute()
 
-Update the mapping of a ledger.
+Update the mapping of a ledger
 
 ### Example
 
@@ -92,7 +92,7 @@ import (
     "context"
     "fmt"
     "os"
-    client "github.com/numary/numary-go"
+    client "./openapi"
 )
 
 func main() {
@@ -100,8 +100,8 @@ func main() {
     mapping := *client.NewMapping([]client.Contract{*client.NewContract(map[string]interface{}(123))}) // Mapping | 
 
     configuration := client.NewConfiguration()
-    api_client := client.NewAPIClient(configuration)
-    resp, r, err := api_client.MappingApi.UpdateMapping(context.Background(), ledger).Mapping(mapping).Execute()
+    apiClient := client.NewAPIClient(configuration)
+    resp, r, err := apiClient.MappingApi.UpdateMapping(context.Background(), ledger).Mapping(mapping).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `MappingApi.UpdateMapping``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+No authorization required
 
 ### HTTP request headers
 

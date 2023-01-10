@@ -1,18 +1,20 @@
 # \ScriptApi
 
-All URIs are relative to *https://.o.numary.cloud/ledger*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**RunScript**](ScriptApi.md#RunScript) | **Post** /{ledger}/script | Execute a Numscript.
+[**RunScript**](ScriptApi.md#RunScript) | **Post** /{ledger}/script | Execute a Numscript
 
 
 
 ## RunScript
 
-> ScriptResult RunScript(ctx, ledger).Script(script).Preview(preview).Execute()
+> ScriptResponse RunScript(ctx, ledger).Script(script).Preview(preview).Execute()
 
-Execute a Numscript.
+Execute a Numscript
+
+
 
 ### Example
 
@@ -23,7 +25,7 @@ import (
     "context"
     "fmt"
     "os"
-    client "github.com/numary/numary-go"
+    client "./openapi"
 )
 
 func main() {
@@ -39,13 +41,13 @@ send [COIN 10] (
     preview := true // bool | Set the preview mode. Preview mode doesn't add the logs to the database or publish a message to the message broker. (optional)
 
     configuration := client.NewConfiguration()
-    api_client := client.NewAPIClient(configuration)
-    resp, r, err := api_client.ScriptApi.RunScript(context.Background(), ledger).Script(script).Preview(preview).Execute()
+    apiClient := client.NewAPIClient(configuration)
+    resp, r, err := apiClient.ScriptApi.RunScript(context.Background(), ledger).Script(script).Preview(preview).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ScriptApi.RunScript``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RunScript`: ScriptResult
+    // response from `RunScript`: ScriptResponse
     fmt.Fprintf(os.Stdout, "Response from `ScriptApi.RunScript`: %v\n", resp)
 }
 ```
@@ -71,11 +73,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ScriptResult**](ScriptResult.md)
+[**ScriptResponse**](ScriptResponse.md)
 
 ### Authorization
 
-[basicAuth](../README.md#basicAuth)
+No authorization required
 
 ### HTTP request headers
 
